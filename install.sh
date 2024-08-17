@@ -59,11 +59,9 @@ EOF
 # Additional ASCII art for GitHub and Porter to Gentoo
 cat << "EOF"
  +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
- |s|i|l|v|e|r|h|a|d|c|h| 
+ | |s|i|l|v|e|r|h|a|d|c|h| | 
  +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
- |P|o|r|t|e|r| |t|o| |G|e|n|t|o|o|
- +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
- |https://github.com/silverhadch|
+ | |G|e|n|t|o|o| |P|o|r|t| | 
  +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
 EOF
 
