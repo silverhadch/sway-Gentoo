@@ -2,7 +2,7 @@
 
 # Function to install selected packages
 install_packages() {
-    sudo apt install -y "$@"
+    sudo emerge --ask "$@"
 }
 
 # File Managers
@@ -34,7 +34,7 @@ for index in $graphics_selection; do
 done
 
 # Terminals
-terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal" )
+terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal")
 
 echo "Choose Terminals to install (space-separated list, e.g., 1 3):"
 for i in "${!terminals[@]}"; do
@@ -62,7 +62,7 @@ for index in $text_editor_selection; do
 done
 
 # Multimedia
-multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix-gui")
+multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix")
 
 echo "Choose Multimedia applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!multimedia[@]}"; do
@@ -75,8 +75,8 @@ for index in $multimedia_selection; do
     selected_multimedia+=("${multimedia[index-1]}")
 done
 
-# utilities
-utilities=( "gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "udns-utils" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl" "redshift" ) 
+# Utilities
+utilities=("gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl" "redshift")
 
 echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!utilities[@]}"; do
