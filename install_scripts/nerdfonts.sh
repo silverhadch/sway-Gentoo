@@ -8,7 +8,8 @@ command_exists() {
 # Check if unzip is installed; if not, install it
 if ! command_exists unzip; then
     echo "Installing unzip..."
-    sudo emerge --ask app-arch/unzip
+    sudo emerge --ask --autounmask-write app-arch/unzip
+    sudo dispatch-conf
 fi
 
 # Create directory for fonts if it doesn't exist
