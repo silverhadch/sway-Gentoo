@@ -21,7 +21,7 @@ prompt_installation_choice() {
     echo "Or ENTER to skip"
     read -r choice
 
-   case "$choice" in
+    case "$choice" in
         1)
             echo "Installing $wm_name with no customization..."
             ;;
@@ -51,7 +51,6 @@ prompt_and_store_choice() {
 
 # Prompt for swayWM installation
 prompt_and_store_choice "sway"
-
 
 # Install based on user choices stored in the array
 for wm_name in "${!choices[@]}"; do
@@ -83,5 +82,3 @@ for wm_name in "${!choices[@]}"; do
 done
 
 echo "All installations completed."
-
-
