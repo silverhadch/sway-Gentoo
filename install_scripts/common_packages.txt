@@ -29,6 +29,7 @@ gui-apps/slurp
 xfce-base/thunar
 xfce-extra/thunar-archive-plugin
 xfce-base/thunar-volman
+x11-terms/tilix
 app-arch/unzip
 x11-misc/xdotool
 xfce-base/xfce4-power-manager
