@@ -38,7 +38,7 @@ else
     echo "Directory $HOME/sway already exists. Skipping clone."
 fi
 # Install eselect-repository if it's not already installed
-sudo emerge app-admin/eselect-repository
+sudo emerge app-eselect/eselect-repository
 
 # Add the gentoo overlay
 sudo eselect repository add gentoo git https://github.com/gentoo/gentoo.git
