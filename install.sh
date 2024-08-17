@@ -24,15 +24,6 @@ install_git() {
     fi
 }
 
-# Initial instructions to the user
-echo "This script will attempt to install and configure various packages and settings."
-echo "Some packages might be masked and require adding 'ACCEPT_KEYWORDS=\"~amd64\"' to your /etc/portage/make.conf."
-echo "If you haven't done so, please update your make.conf accordingly before proceeding."
-echo "Failure to add this may result in installation errors."
-
-# Pause to allow user to read the message
-read -p "Press Enter to continue or Ctrl+C to exit..."
-
 # Check if Git is installed
 if ! command_exists git; then
     install_git
@@ -56,7 +47,14 @@ cat << "EOF"
  |c|u|s|t|o|m| |s|c|r|i|p|t| 
  +-+-+-+-+-+-+ +-+-+-+-+-+-+                                                                                                            
 EOF
+# Initial instructions to the user
+echo "This script will attempt to install and configure various packages and settings."
+echo "Some packages might be masked and require adding 'ACCEPT_KEYWORDS=\"~amd64\"' to your /etc/portage/make.conf."
+echo "If you haven't done so, please update your make.conf accordingly before proceeding."
+echo "Failure to add this may result in installation errors."
 
+# Pause to allow user to read the message
+read -p "Press Enter to continue or Ctrl+C to exit..."
 # Run setup scripts
 for script in setup.sh packages.sh display_manager.sh add_bashrc.sh printers.sh bluetooth.sh; do
     script_path="$HOME/sway/install_scripts/$script"
