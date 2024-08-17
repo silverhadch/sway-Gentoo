@@ -20,7 +20,7 @@ sys-fs/mtools
 net-misc/networkmanager
 gnome-extra/nm-applet
 media-sound/pulsemixer
-X11-themes/papirus-icon-theme
+x11-themes/papirus-icon-theme
 media-sound/pavucontrol
 sys-auth/polkit
 media-sound/pulsemixer
