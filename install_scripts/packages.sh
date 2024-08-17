@@ -2,7 +2,8 @@
 
 # Function to install selected packages
 install_packages() {
-    sudo emerge --ask "$@"
+    sudo emerge --ask --autounmask-write "$@"
+    sudo dispatch-conf
 }
 
 # File Managers
