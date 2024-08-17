@@ -1,4 +1,4 @@
-acpid
+sys-power/acpid
 avahi
 curl
 dialog
