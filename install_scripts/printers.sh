@@ -5,8 +5,9 @@ read response
 
 if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Installing printing services..."
-		sudo apt install -y cups system-config-printer simple-scan
-		sudo systemctl enable cups.service
+    sudo emerge --ask cups system-config-printer simple-scan
+    sudo rc-update add cups default
+    sudo rc-service cups start
     echo "Printing services installed."
 elif [[ "$response" =~ ^[Nn]$ ]]; then
     echo "Printing services will not be installed."
