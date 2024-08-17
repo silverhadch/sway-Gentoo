@@ -3,16 +3,16 @@
 # Check if git is installed
 if ! command -v git &> /dev/null; then
     echo "Git is not installed. Attempting to install Git..."
-    
-    # Use apt to install git
-    if command -v apt &> /dev/null; then
-        sudo apt update
-        sudo apt install git -y
+
+    # Use emerge to install git (Gentoo's package manager)
+    if command -v emerge &> /dev/null; then
+        sudo emerge --sync
+        sudo emerge --ask --verbose dev-vcs/git
     else
-        echo "Cannot install Git automatically using apt. Please install Git manually and run this script again."
+        echo "Cannot install Git automatically using emerge. Please install Git manually and run this script again."
         exit 1
     fi
-    
+
     # Check again if git is installed after attempting to install
     if ! command -v git &> /dev/null; then
         echo "Git installation failed. Please install Git manually and run this script again."
@@ -21,13 +21,9 @@ if ! command -v git &> /dev/null; then
 fi
 
 echo "Git is installed. Continuing with the script..."
-# Add further commands here after ensuring Git is installed
-
-
 
 # Clone the repository into the home directory
 git clone https://github.com/drewgrif/sway ~/sway
-
 
 clear
 echo "
@@ -37,9 +33,6 @@ echo "
  |c|u|s|t|o|m| |s|c|r|i|p|t| 
  +-+-+-+-+-+-+ +-+-+-+-+-+-+                                                                                                            
 "
-
-# Make setup.sh executable (if needed, though it's typically already executable)
-# chmod +x setup.sh packages.sh
 
 # Run the setup script
 bash ~/sway/install_scripts/setup.sh
@@ -53,22 +46,25 @@ clear
 
 echo "Make sure a Display Manager is installed"
 
-# make sure gdm3 is installed
-bash ~/sway/install_scripts/gdm.sh
+# Install SDDM (or another Display Manager)
+bash ~/sway/install_scripts/display_manager.sh
 
 clear
 
-# add bashrc question
+# Add bashrc configuration
 bash ~/sway/install_scripts/add_bashrc.sh
 
 clear 
 
+# Run the printers setup script
 bash ~/sway/install_scripts/printers.sh
 
 clear 
 
+# Run the Bluetooth setup script
 bash ~/sway/install_scripts/bluetooth.sh
-sudo apt autoremove
 
-printf "\e[1;32mYou can now reboot! Thanks you.\e[0m\n"
+# Clean up unnecessary packages
+sudo emerge --depclean
 
+printf "\e[1;32mYou can now reboot! Thank you.\e[0m\n"
