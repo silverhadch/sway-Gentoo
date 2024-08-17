@@ -5,7 +5,8 @@ read response
 
 if [[ "$response" =~ ^[Yy]$ ]]; then
     echo "Installing printing services..."
-    sudo emerge --ask cups system-config-printer simple-scan
+    sudo emerge --ask  --autounmask-write cups system-config-printer simple-scan
+    sudo dispatch-conf
     sudo rc-update add cups default
     sudo rc-service cups start
     echo "Printing services installed."
