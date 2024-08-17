@@ -1,7 +1,7 @@
 
 ## Wayland compositor
 
-Assuming you have already installed a minimal Debian 12 install.
+This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work i havent completly tested it.
 The series of shell scripts are intended to facilitate installing popular window managers.
 
 Within the install.sh file, you can choose to install the following window managers:
