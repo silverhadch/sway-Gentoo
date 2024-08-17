@@ -3,13 +3,13 @@
 # Function to check if a service is active and enabled
 service_active_and_enabled() {
     local service="$1"
-    # Check if service is active and enabled
-    sudo systemctl is-active --quiet "$service" && sudo systemctl is-enabled --quiet "$service"
+    # Check if service is active and enabled using OpenRC
+    rc-service "$service" status &> /dev/null && rc-update show default | grep -q "$service"
 }
 
-# Check if GDM3 is installed and enabled
+# Check if GDM is installed and enabled
 check_gdm() {
-    service_active_and_enabled gdm3
+    service_active_and_enabled gdm
 }
 
 # Check if SDDM is installed and enabled
@@ -37,9 +37,9 @@ check_slim() {
     service_active_and_enabled slim
 }
 
-# Function to ask if user wants to install GDM3 if another DM is installed
+# Function to ask if the user wants to install GDM if another DM is installed
 ask_install_gdm() {
-    read -p "GDM3 is recommended. Install? (y/n): " answer
+    read -p "GDM is recommended. Install? (y/n): " answer
     case $answer in
         [yY])
             install_gdm
@@ -51,54 +51,49 @@ ask_install_gdm() {
     esac
 }
 
-# Function to install and enable GDM3
+# Function to install and enable GDM
 install_gdm() {
-    echo "Installing minimal GDM3 (recommended)..."
-    sudo apt update
-    sudo apt install -y --no-install-recommends gdm3
-    sudo systemctl enable gdm3
-    echo "GDM3 has been installed and enabled."
+    echo "Installing minimal GDM (recommended)..."
+    sudo emerge --ask gnome-base/gdm
+    sudo rc-update add gdm default
+    echo "GDM has been installed and enabled."
 }
 
 # Function to install and enable SDDM
 install_sddm() {
     echo "Installing minimal SDDM..."
-    sudo apt update
-    sudo apt install -y --no-install-recommends sddm
-    sudo systemctl enable sddm
+    sudo emerge --ask x11-misc/sddm
+    sudo rc-update add sddm default
     echo "SDDM has been installed and enabled."
 }
 
 # Function to install and enable LightDM
 install_lightdm() {
     echo "Installing LightDM (recommended)..."
-    sudo apt update
-    sudo apt install -y lightdm
-    sudo systemctl enable lightdm
+    sudo emerge --ask x11-misc/lightdm
+    sudo rc-update add lightdm default
     echo "LightDM has been installed and enabled."
 }
 
 # Function to install and enable LXDM
 install_lxdm() {
     echo "Installing LXDM..."
-    sudo apt update
-    sudo apt install -y --no-install-recommends lxdm
-    sudo systemctl enable lxdm
+    sudo emerge --ask lxde-base/lxdm
+    sudo rc-update add lxdm default
     echo "LXDM has been installed and enabled."
 }
 
 # Function to install and enable SLiM
 install_slim() {
     echo "Installing SLiM..."
-    sudo apt update
-    sudo apt install -y slim
-    sudo systemctl enable slim
+    sudo emerge --ask x11-misc/slim
+    sudo rc-update add slim default
     echo "SLiM has been installed and enabled."
 }
 
 # Check which display managers are installed and enabled
 if check_gdm; then
-    echo "GDM3 is already installed and enabled (recommended)."
+    echo "GDM is already installed and enabled (recommended)."
     exit 0
 elif check_sddm; then
     echo "SDDM is already installed and enabled."
@@ -127,7 +122,7 @@ echo "No supported display manager found."
 
 # Menu for user choice
 echo "Choose an option (or '0' to skip):"
-echo "1. Install minimal GDM3 (recommended)"
+echo "1. Install minimal GDM (recommended)"
 echo "2. Install minimal SDDM"
 echo "3. Install LightDM"
 echo "4. Install LXDM"
@@ -160,4 +155,3 @@ case $choice in
         exit 1
         ;;
 esac
-
