@@ -14,22 +14,22 @@ fi
 
 # Create a temporary directory
 temp_dir=$(mktemp -d)
-cd "$temp_dir"
+cd "$temp_dir" || exit 1
 
-# Install dependencies
-sudo apt install -y golang libgtk-3-dev libcairo2-dev libglib2.0-bin zip
+# Install dependencies (adjust for Gentoo)
+sudo emerge --ask dev-lang/go x11-libs/gtk+:3 media-libs/cairo dev-libs/glib app-arch/zip
 
 # Download and extract nwg-look v0.2.7
 wget https://github.com/nwg-piotr/nwg-look/archive/refs/tags/v0.2.7.zip
 unzip v0.2.7.zip
-cd nwg-look-0.2.7
+cd nwg-look-0.2.7 || exit 1
 
 # Build and install nwg-look
 make build
 sudo make install
 
 # Clean up temporary files
-cd "$temp_dir"
+cd "$temp_dir" || exit 1
 rm -rf nwg-look-0.2.7
 rm v0.2.7.zip
 rmdir "$temp_dir"
