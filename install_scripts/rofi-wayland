@@ -17,7 +17,8 @@ temp_dir=$(mktemp -d)
 cd "$temp_dir" || exit
 
 # Install dependencies
-sudo emerge --ask bison flex ninja meson cmake libxcb-xkb libxcb-util libxkbcommon libxcb-ewmh libxcb-icccm libxcb-randr libxcb-util libxcb-xinerama libxkbcommon libxcb-cursor libstartup-notification zip
+sudo emerge --ask --autounmask-write bison flex ninja meson cmake libxcb-xkb libxcb-util libxkbcommon libxcb-ewmh libxcb-icccm libxcb-randr libxcb-util libxcb-xinerama libxkbcommon libxcb-cursor libstartup-notification zip
+sudo dispatch-conf
 
 # Download and install rofi for Wayland
 git clone https://github.com/lbonn/rofi.git ~/sway/rofi
