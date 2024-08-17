@@ -39,7 +39,8 @@ install_packages() {
     # Install missing packages
     if [ ${#missing_pkgs[@]} -gt 0 ]; then
         echo "Installing missing packages: ${missing_pkgs[@]}"
-        sudo emerge --ask "${missing_pkgs[@]}"
+        sudo emerge --ask --autounmask-write "${missing_pkgs[@]}"
+        sudo dispatch-conf
         if [ $? -ne 0 ]; then
             echo "Failed to install some packages. Exiting."
             exit 1
