@@ -1,3 +1,7 @@
+## Status of the Port
+(Almost Completly) Finished for sway. I will try to fix tilix and Redshift and add Systemd as an init Option later on and pull changes for other tilers from
+Upstream after making them work.
+
 
 ## Wayland compositor
 
