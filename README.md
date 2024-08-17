@@ -1,6 +1,9 @@
 
 ## Wayland compositor
 
+THERE SEEMS TO BE A DEPENDENCY ISSUE WITH SWAY UNTIL ITS RESOOVED OR YOUSELF MANUEL INTERVENE, THIS SCRIPT WILL FAIL!!!
+
+
 This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work i havent completly tested it. This script wants to install a small number of masked packages else the script fails so first equery must be installed amd in your /etc/portage/make.conf this line:
 
 ACCEPT_KEYWORDS="~amd64" 
