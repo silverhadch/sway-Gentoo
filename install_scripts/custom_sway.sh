@@ -2,7 +2,6 @@
 
 # Main list of packages
 packages=(
-    "gui-wm/sway"
     "gui-apps/waybar"
     "gui-apps/swaylock"
     "gui-apps/swayidle"
@@ -49,7 +48,52 @@ install_packages() {
         echo "All required packages are already installed."
     fi
 }
+echo "Sway will be compiled from source due to dependency issues of the repo package"
 
+# Define variables
+SWAY_REPO_URL="https://github.com/swaywm/sway.git"
+WLROOTS_REPO_URL="https://gitlab.com/swaywm/wlroots.git"
+LIB_PATH="/usr/local/lib64"
+
+# Clone sway repository
+echo "Cloning sway-source repository..."
+git clone $SWAY_REPO_URL sway
+
+# Change into the sway directory
+cd sway || { echo "Failed to change directory to sway"; exit 1; }
+
+# Clone wlroots into the subprojects directory
+echo "Cloning wlroots into subprojects/wlroots..."
+git clone $WLROOTS_REPO_URL subprojects/wlroots
+
+# Build and install sway
+echo "Building and installing sway..."
+meson build
+ninja -C build
+sudo ninja -C build install
+
+# Remove the wlroots source directory after installation
+echo "Removing wlroots source directory..."
+rm -rf subprojects/wlroots
+
+# Remove the sway source directory after installation
+cd ..
+echo "Removing sway source directory..."
+rm -rf sway
+
+# Configure library path
+echo "Configuring library path..."
+echo "$LIB_PATH" | sudo tee /etc/ld.so.conf.d/local-lib64.conf
+
+# Update library cache
+echo "Updating library cache..."
+sudo ldconfig
+
+# Check sway version
+echo "Checking sway version..."
+sway --version
+
+echo "Sway-source completed."
 # Call function to install packages
 install_packages "${packages[@]}"
 
