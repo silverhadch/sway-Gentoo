@@ -23,7 +23,8 @@ fi
 echo "Git is installed. Continuing with the script..."
 
 # Clone the repository into the home directory
-git clone https://github.com/silverhadch/sway-Gentoo ~/sway
+git clone https://github.com/silverhadch/sway-Gentoo
+cp -r sway-Gentoo ~/sway
 
 clear
 echo "
