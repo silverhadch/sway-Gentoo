@@ -14,7 +14,7 @@ sys-devel/gettext
 gui-apps/grim
 gnome-base/gvfs
 x11-terms/kitty
-X11-libs/libnotify
+x11-libs/libnotify
 dev-libs/light
 sys-fs/mtools
 net-misc/networkmanager
