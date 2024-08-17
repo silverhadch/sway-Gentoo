@@ -5,7 +5,7 @@ This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work
 
 ACCEPT_KEYWORDS="~amd64" 
 
-must be added so the masked packages can be installed. The Tilix Terminal doesnt work right now.
+must be added so the masked packages can be installed. The Tilix Terminal doesnt work right now and Redshift too. But i havent removed them from the options yet so firstly check out the package list if its even in their.
 The series of shell scripts are intended to facilitate installing popular window managers.
 
 Within the install.sh file, you can choose to install the following window managers:
