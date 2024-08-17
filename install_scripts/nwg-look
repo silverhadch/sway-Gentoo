@@ -17,7 +17,8 @@ temp_dir=$(mktemp -d)
 cd "$temp_dir" || exit 1
 
 # Install dependencies (adjust for Gentoo)
-sudo emerge --ask dev-lang/go x11-libs/gtk+:3 media-libs/cairo dev-libs/glib app-arch/zip
+sudo emerge --ask --autounmask-write dev-lang/go x11-libs/gtk+:3 media-libs/cairo dev-libs/glib app-arch/zip
+sudo dispatch-conf
 
 # Download and extract nwg-look v0.2.7
 wget https://github.com/nwg-piotr/nwg-look/archive/refs/tags/v0.2.7.zip
