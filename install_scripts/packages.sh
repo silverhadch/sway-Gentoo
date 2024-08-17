@@ -77,7 +77,7 @@ for index in $multimedia_selection; do
 done
 
 # Utilities
-utilities=("gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl" "redshift")
+utilities=("gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl")
 
 echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!utilities[@]}"; do
