@@ -1,7 +1,11 @@
 
 ## Wayland compositor
 
-This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work i havent completly tested it.
+This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work i havent completly tested it. This script wants to install a small number of masked packages else the script fails so first equery must be installed amd in your /etc/portage/make.conf this line:
+
+ACCEPT_KEYWORDS="~amd64" 
+
+must be added so the masked packages can be installed. The Tilix Terminal doesnt work right now.
 The series of shell scripts are intended to facilitate installing popular window managers.
 
 Within the install.sh file, you can choose to install the following window managers:
