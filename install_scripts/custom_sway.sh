@@ -2,12 +2,12 @@
 
 # Main list of packages
 packages=(
-    "sway"
-    "waybar"
-    "swaylock"
-    "swayidle"
-    "swaybg"
-    "sway-notification-center"
+    "gui-wm/sway"
+    "gui-apps/waybar"
+    "gui-apps/swaylock"
+    "gui-apps/swayidle"
+    "gui-apps/swaybg"
+    "gui-apps/mako"
 )
 
 # Function to read common packages from a file
