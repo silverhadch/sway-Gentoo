@@ -4,11 +4,11 @@
 THERE SEEMS TO BE A DEPENDENCY ISSUE WITH SWAY IN THE OFFICIAL REPO SO SWAY AND WLROOTS WILL BE COMPILED FROM SOURCE!!!
 This will however make like 3 minutes tho.
 
-This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work i havent completly tested it. This script wants to install a small number of masked packages else the script fails so first equery must be installed amd in your /etc/portage/make.conf this line:
+This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work (by that i mean tilix and redshift lol) but the rest for a Standard Gentoo System with OpenRC it will work. This script wants to install a small number of masked packages else the script fails so first equery must be installed amd in your /etc/portage/make.conf this line:
 
 ACCEPT_KEYWORDS="~amd64" 
 
-must be added so the masked packages can be installed. The Tilix Terminal doesnt work right now and Redshift too. But i havent removed them from the options yet so firstly check out the package list if its even in their. The init System is zhe Standard i will most likely later on add systemd support.
+must be added so the masked packages can be installed. The Tilix Terminal doesnt work right now and Redshift too most likely. But i havent removed them from the options yet so firstly check out the package list if its even in their. The init System is zhe Standard i will most likely later on add systemd support.
 The series of shell scripts are intended to facilitate installing popular window managers.
 
 Within the install.sh file, you can choose to install the following window managers:
