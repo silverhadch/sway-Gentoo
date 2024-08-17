@@ -2,12 +2,12 @@
 
 # Main list of packages
 packages=(
-	"sway"
-	"waybar" 
-	"swaylock"
-	"swayidle"
-	"swaybg"
-	"sway-notification-center"
+    "sway"
+    "waybar"
+    "swaylock"
+    "swayidle"
+    "swaybg"
+    "sway-notification-center"
 )
 
 # Function to read common packages from a file
@@ -22,7 +22,7 @@ read_common_packages() {
 }
 
 # Read common packages from file
-read_common_packages $HOME/sway/install_scripts/common_packages.txt
+read_common_packages "$HOME/sway/install_scripts/common_packages.txt"
 
 # Function to install packages if they are not already installed
 install_packages() {
@@ -31,7 +31,7 @@ install_packages() {
 
     # Check if each package is installed
     for pkg in "${pkgs[@]}"; do
-        if ! dpkg -l | grep -q " $pkg "; then
+        if ! equery list "$pkg" > /dev/null 2>&1; then
             missing_pkgs+=("$pkg")
         fi
     done
@@ -39,8 +39,7 @@ install_packages() {
     # Install missing packages
     if [ ${#missing_pkgs[@]} -gt 0 ]; then
         echo "Installing missing packages: ${missing_pkgs[@]}"
-        sudo apt update
-        sudo apt install -y "${missing_pkgs[@]}"
+        sudo emerge --ask "${missing_pkgs[@]}"
         if [ $? -ne 0 ]; then
             echo "Failed to install some packages. Exiting."
             exit 1
@@ -53,31 +52,35 @@ install_packages() {
 # Call function to install packages
 install_packages "${packages[@]}"
 
-sudo systemctl enable avahi-daemon
-sudo systemctl enable acpid
+# Enable services using OpenRC
+sudo rc-update add avahi-daemon default
+sudo rc-update add acpid default
 
+# Start services if needed
+sudo rc-service avahi-daemon start
+sudo rc-service acpid start
+
+# Update user directories
 xdg-user-dirs-update
-mkdir ~/Screenshots/
+mkdir -p ~/Screenshots/
 
-# nerd font installation
+# Nerd font installation
 bash ~/sway/install_scripts/nerdfonts.sh
 
-# install nwg-look
+# Install nwg-look
 bash ~/sway/install_scripts/nwg-look
 
-# install rofi-wayland
+# Install rofi-wayland
 bash ~/sway/install_scripts/rofi-wayland
 
-# moving custom config
-\cp -r ~/sway/configs/scripts/ ~
-\cp -r ~/sway/configs/sway/ ~/.config/
-\cp -r ~/sway/configs/swaync/ ~/.config/
-\cp -r ~/sway/configs/waybar/ ~/.config/
-\cp -r ~/sway/configs/rofi/ ~/.config/
-\cp -r ~/sway/configs/kitty/ ~/.config/
-\cp -r ~/sway/configs/backgrounds/ ~/.config/
+# Moving custom config files
+cp -r ~/sway/configs/scripts/ ~
+cp -r ~/sway/configs/sway/ ~/.config/
+cp -r ~/sway/configs/swaync/ ~/.config/
+cp -r ~/sway/configs/waybar/ ~/.config/
+cp -r ~/sway/configs/rofi/ ~/.config/
+cp -r ~/sway/configs/kitty/ ~/.config/
+cp -r ~/sway/configs/backgrounds/ ~/.config/
 
-# adding gtk theme and icon theme
+# Adding GTK theme and icon theme
 bash ~/sway/colorschemes/purple.sh
-
-
