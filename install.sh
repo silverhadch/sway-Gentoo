@@ -54,6 +54,17 @@ cat << "EOF"
  |c|u|s|t|o|m| |s|c|r|i|p|t| 
  +-+-+-+-+-+-+ +-+-+-+-+-+-+                                                                                                            
 EOF
+# Additional ASCII art for GitHub and Porter to Gentoo
+cat << "EOF"
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ |s|i|l|v|e|r|h|a|d|c|h| 
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ |P|o|r|t|e|r| |t|o| |G|e|n|t|o|o|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ |https://github.com/silverhadch|
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+EOF
+
 # Initial instructions to the user
 echo "This script will attempt to install and configure various packages and settings."
 echo "Some packages might be masked and require adding 'ACCEPT_KEYWORDS=\"~amd64\"' to your /etc/portage/make.conf."
