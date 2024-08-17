@@ -45,6 +45,8 @@ sudo eselect repository add gentoo git https://github.com/gentoo/gentoo.git
 
 # Sync the Portage tree
 sudo emerge --sync
+
+sudo emerge dev-build/ninja
 # Display a welcome message
 clear
 cat << "EOF"
