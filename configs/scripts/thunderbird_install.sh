@@ -2,7 +2,7 @@
 
 # Making sure you have unarchiver
 
-sudo apt install unzip
+sudo emerge --ask unzip
 
 # Retrieve thunderbird 15 zipped file 
 
