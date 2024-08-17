@@ -37,7 +37,14 @@ if [ ! -d "$HOME/sway" ]; then
 else
     echo "Directory $HOME/sway already exists. Skipping clone."
 fi
+# Install eselect-repository if it's not already installed
+sudo emerge app-admin/eselect-repository
 
+# Add the gentoo overlay
+sudo eselect repository add gentoo git https://github.com/gentoo/gentoo.git
+
+# Sync the Portage tree
+sudo emerge --sync
 # Display a welcome message
 clear
 cat << "EOF"
