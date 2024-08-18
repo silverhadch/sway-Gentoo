@@ -57,10 +57,10 @@ LIB_PATH="/usr/local/lib64"
 
 # Clone sway repository
 echo "Cloning sway-source repository..."
-git clone $SWAY_REPO_URL sway
+git clone $SWAY_REPO_URL sway-source
 
 # Change into the sway directory
-cd sway || { echo "Failed to change directory to sway"; exit 1; }
+cd sway-source || { echo "Failed to change directory to sway"; exit 1; }
 
 # Clone wlroots into the subprojects directory
 echo "Cloning wlroots into subprojects/wlroots..."
@@ -79,7 +79,7 @@ rm -rf subprojects/wlroots
 # Remove the sway source directory after installation
 cd ..
 echo "Removing sway source directory..."
-rm -rf sway
+rm -rf sway-source
 
 # Configure library path
 echo "Configuring library path..."
