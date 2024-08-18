@@ -1,10 +1,6 @@
 # using the super key
 set $mod Mod4
 
-# Keyboard layout
-input * {
-  xkb_layout "us"
-}
 
 # set terminal and menu
 set $term tilix
