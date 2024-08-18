@@ -6,7 +6,7 @@ Upstream after making them work.
 
 ## Wayland compositor
 
-THERE SEEMS TO BE A DEPENDENCY ISSUE WITH SWAY IN THE OFFICIAL REPO SO SWAY AND WLROOTS WILL BE COMPILED FROM SOURCE!!!
+THERE SEEMS TO BE A DEPENDENCY ISSUE WITH SWAY IN THE OFFICIAL REPO SO SWAY AND WLROOTS WILL BE COMPILED FROM THE UPSTREAM SOURCE!!!
 This will however make like 3 minutes tho.
 
 This is a Port for Gentoo of a Sway Setup script. Dont expect everything to work (by that i mean tilix and redshift lol) but the rest for a Standard Gentoo System with OpenRC it will work. This script wants to install a small number of masked packages else the script fails so first equery must be installed amd in your /etc/portage/make.conf this line:
