@@ -37,6 +37,8 @@ if [ ! -d "$HOME/sway" ]; then
 else
     echo "Directory $HOME/sway already exists. Skipping clone."
 fi
+
+echo "Some dependencies for the script will be installed..."
 # Install eselect-repository if it's not already installed
 sudo emerge app-eselect/eselect-repository
 
