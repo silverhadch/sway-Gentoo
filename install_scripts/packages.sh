@@ -7,7 +7,7 @@ install_packages() {
 }
 
 # File Managers
-file_managers=("xfce-base/thunar" "x11-misc/pcmanfm" "kde-misc/krusader" "gnome-base/nautilus" "gnome-extra/nemo" "kde-apps/dolphin" "ranger" "nnn" "lf")
+file_managers=("xfce-base/thunar" "x11-misc/pcmanfm" "kde-misc/krusader" "gnome-base/nautilus" "gnome-extra/nemo" "kde-apps/dolphin" "app-misc/ranger" "app-misc/nnn" "app-misc/lf")
 
 echo "Choose File Managers to install (space-separated list, e.g., 1 3 5):"
 for i in "${!file_managers[@]}"; do
@@ -21,7 +21,7 @@ for index in $file_manager_selection; do
 done
 
 # Graphics
-graphics=("gimp" "flameshot" "eog" "sxiv" "qimgv" "inkscape" "scrot")
+graphics=("media-gfx/gimp" "media-gfx/flameshot" "media-gfx/eog" "media-gfx/sxiv" "media-gfx/qimgv" "media-gfx/inkscape" "media-gfx/scrot")
 
 echo "Choose graphics applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!graphics[@]}"; do
