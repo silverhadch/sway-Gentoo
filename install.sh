@@ -45,6 +45,28 @@ sudo emerge app-eselect/eselect-repository
 # Add the gentoo overlay
 sudo eselect repository add gentoo git https://github.com/gentoo/gentoo.git
 
+# Function to check if a repository is enabled and enable it if not
+enable_overlay() {
+    local overlay="$1"
+    
+    # Check if the overlay is already enabled
+    if eselect repository list | grep -q "$overlay"; then
+        echo "$overlay repository is already enabled."
+    else
+        echo "Enabling $overlay repository..."
+        sudo eselect repository enable "$overlay"
+        echo "Syncing $overlay repository..."
+        sudo emerge --sync "$overlay"
+        echo "$overlay repository enabled and synced."
+    fi
+}
+
+# Enable the required overlays
+enable_overlay "dlang"
+enable_overlay "guru"
+enable_overlay "gentoo"
+
+
 # Sync the Portage tree
 sudo emerge --sync
 
