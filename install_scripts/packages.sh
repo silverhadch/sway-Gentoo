@@ -49,7 +49,7 @@ for index in $terminal_selection; do
 done
 
 # Text Editors
-text_editors=("geany" "kate" "gedit" "l3afpad" "mousepad" "pluma")
+text_editors=("dev-util/geany" "kde-apps/kate" "app-editors/gedit" "app-editors/l3afpad" "app-editors/mousepad" "app-editors/pluma")
 
 echo "Choose Text Editors to install (space-separated list, e.g., 1 3 5):"
 for i in "${!text_editors[@]}"; do
@@ -63,7 +63,7 @@ for index in $text_editor_selection; do
 done
 
 # Multimedia
-multimedia=("mpv" "vlc" "audacity" "kdenlive" "obs-studio" "rhythmbox" "ncmpcpp" "mkvtoolnix")
+multimedia=("media-video/mpv" "media-video/vlc" "media-sound/audacity" "kde-apps/kdenlive" "media-video/obs-studio" "media-sound/rhythmbox" "media-sound/ncmpcpp" "media-video/mkvtoolnix")
 
 echo "Choose Multimedia applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!multimedia[@]}"; do
