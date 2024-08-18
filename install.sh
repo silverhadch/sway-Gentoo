@@ -40,10 +40,8 @@ fi
 
 echo "Some dependencies for the script will be installed..."
 # Install eselect-repository if it's not already installed
-sudo emerge app-eselect/eselect-repository
+sudo emerge --ask app-eselect/eselect-repository
 
-# Add the gentoo overlay
-sudo eselect repository add gentoo git https://github.com/gentoo/gentoo.git
 
 # Function to check if a repository is enabled and enable it if not
 enable_overlay() {
@@ -64,13 +62,12 @@ enable_overlay() {
 # Enable the required overlays
 enable_overlay "dlang"
 enable_overlay "guru"
-enable_overlay "gentoo"
 
 
 # Sync the Portage tree
 sudo emerge --sync
 
-sudo emerge dev-build/ninja
+sudo emerge --ask dev-build/ninja
 # Display a welcome message
 clear
 cat << "EOF"
