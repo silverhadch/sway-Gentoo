@@ -7,7 +7,7 @@ install_packages() {
 }
 
 # File Managers
-file_managers=("thunar" "pcmanfm" "krusader" "nautilus" "nemo" "dolphin" "ranger" "nnn" "lf")
+file_managers=("xfce-base/thunar" "x11-misc/pcmanfm" "kde-misc/krusader" "gnome-base/nautilus" "gnome-extra/nemo" "kde-apps/dolphin" "ranger" "nnn" "lf")
 
 echo "Choose File Managers to install (space-separated list, e.g., 1 3 5):"
 for i in "${!file_managers[@]}"; do
