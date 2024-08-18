@@ -1,6 +1,11 @@
 # using the super key
 set $mod Mod4
 
+# Keyboard layout
+input * {
+  xkb_layout "us"
+}
+
 # set terminal and menu
 set $term tilix
 set $menu rofi -show drun -modi drun -line-padding 4 -hide-scrollbar -show-icons
