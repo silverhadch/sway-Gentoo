@@ -74,7 +74,7 @@ echo "Failure to add this may result in installation errors."
 # Pause to allow user to read the message
 read -p "Press Enter to continue or Ctrl+C to exit..."
 # Run setup scripts
-for script in setup.sh packages.sh display_manager.sh add_bashrc.sh printers.sh bluetooth.sh; do
+for script in setup.sh packages.sh display_manager.sh add_bashrc.sh printers.sh bluetooth.sh addsession.sh; do
     script_path="$HOME/sway/install_scripts/$script"
     if [ -x "$script_path" ]; then
         bash "$script_path"
