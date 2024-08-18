@@ -77,7 +77,7 @@ for index in $multimedia_selection; do
 done
 
 # Utilities
-utilities=("gparted" "gnome-disk-utility" "neofetch" "nitrogen" "numlockx" "galculator" "cpu-x" "whois" "curl" "tree" "btop" "htop" "bat" "brightnessctl")
+utilities=("sys-block/gparted" "sys-apps/gnome-disk-utility" "app-misc/fastfetch" "x11-misc/nitrogen" "x11-misc/numlockx" "sci-calculators/galculator" "sys-apps/cpu-x" "net-misc/whois" "net-misc/curl" "app-text/tree" "sys-process/btop" "sys-process/htop" "sys-apps/bat" "app-misc/brightnessctl" "x11-misc/redshift" "x11-misc/gammastep")
 
 echo "Choose utilities applications to install (space-separated list, e.g., 1 3 5):"
 for i in "${!utilities[@]}"; do
