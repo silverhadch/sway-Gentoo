@@ -3,138 +3,85 @@
 # Function to check if a service is active and enabled
 service_active_and_enabled() {
     local service="$1"
-    # Check if service is active and enabled using OpenRC
     rc-service "$service" status &> /dev/null && rc-update show default | grep -q "$service"
 }
 
-# Check if GDM is installed and enabled
-check_gdm() {
-    service_active_and_enabled gdm
+# Function to check if the display manager is set in /etc/conf.d/display-manager
+check_display_manager() {
+    grep -q 'DISPLAYMANAGER="' /etc/conf.d/display-manager
 }
 
-# Check if SDDM is installed and enabled
-check_sddm() {
-    service_active_and_enabled sddm
+# Function to configure /etc/conf.d/display-manager
+configure_display_manager() {
+    local dm="$1"
+    echo "Configuring $dm as the display manager..."
+    sudo sed -i "s/^DISPLAYMANAGER=.*/DISPLAYMANAGER=\"$dm\"/" /etc/conf.d/display-manager
+    sudo rc-update add display-manager default
 }
 
-# Check if LightDM is installed and enabled
-check_lightdm() {
-    service_active_and_enabled lightdm
-}
-
-# Check if LXDM is installed and enabled
-check_lxdm() {
-    service_active_and_enabled lxdm
-}
-
-# Check if Ly is installed and enabled
-check_ly() {
-    service_active_and_enabled ly
-}
-
-# Check if SLiM is installed and enabled
-check_slim() {
-    service_active_and_enabled slim
-}
-
-# Function to ask if the user wants to install GDM if another DM is installed
-ask_install_gdm() {
-    read -p "GDM is recommended. Install? (y/n): " answer
-    case $answer in
-        [yY])
-            install_gdm
-            ;;
-        *)
-            echo "Okay, exiting."
-            exit 0
-            ;;
-    esac
-}
-
-# Function to install and enable GDM
+# Function to install and configure GDM
 install_gdm() {
-    echo "Installing minimal GDM (recommended)..."
-    sudo emerge --ask gnome-base/gdm
-    sudo rc-update add gdm default
-    echo "GDM has been installed and enabled."
+    echo "Installing GDM..."
+    sudo emerge --ask gnome-base/gdm || { echo "Failed to install GDM"; exit 1; }
+    configure_display_manager gdm
+    echo "GDM has been installed and configured."
 }
 
-# Function to install and enable SDDM
+# Function to install and configure SDDM
 install_sddm() {
-    echo "Installing minimal SDDM..."
-    sudo emerge --ask x11-misc/sddm
-    sudo rc-update add sddm default
-    echo "SDDM has been installed and enabled."
+    echo "Installing SDDM..."
+    sudo emerge --ask x11-misc/sddm || { echo "Failed to install SDDM"; exit 1; }
+    configure_display_manager sddm
+    echo "SDDM has been installed and configured."
 }
 
-# Function to install and enable LightDM
+# Function to install and configure LightDM
 install_lightdm() {
-    echo "Installing LightDM (recommended)..."
-    sudo emerge --ask x11-misc/lightdm
-    sudo rc-update add lightdm default
-    echo "LightDM has been installed and enabled."
+    echo "Installing LightDM..."
+    sudo emerge --ask x11-misc/lightdm || { echo "Failed to install LightDM"; exit 1; }
+    configure_display_manager lightdm
+    echo "LightDM has been installed and configured."
 }
 
-# Function to install and enable LXDM
+# Function to install and configure LXDM
 install_lxdm() {
     echo "Installing LXDM..."
-    sudo emerge --ask lxde-base/lxdm
-    sudo rc-update add lxdm default
-    echo "LXDM has been installed and enabled."
+    sudo emerge --ask lxde-base/lxdm || { echo "Failed to install LXDM"; exit 1; }
+    configure_display_manager lxdm
+    echo "LXDM has been installed and configured."
 }
 
-# Function to install and enable SLiM
+# Function to install and configure SLiM
 install_slim() {
     echo "Installing SLiM..."
-    sudo emerge --ask x11-misc/slim
-    sudo rc-update add slim default
-    echo "SLiM has been installed and enabled."
+    sudo emerge --ask x11-misc/slim || { echo "Failed to install SLiM"; exit 1; }
+    configure_display_manager slim
+    echo "SLiM has been installed and configured."
 }
 
-# Check which display managers are installed and enabled
-if check_gdm; then
-    echo "GDM is already installed and enabled (recommended)."
-    exit 0
-elif check_sddm; then
-    echo "SDDM is already installed and enabled."
-    ask_install_gdm
-    exit 0
-elif check_lightdm; then
-    echo "LightDM is already installed and enabled."
-    ask_install_gdm
-    exit 0
-elif check_lxdm; then
-    echo "LXDM is already installed and enabled."
-    ask_install_gdm
-    exit 0
-elif check_ly; then
-    echo "Ly is already installed and enabled."
-    ask_install_gdm
-    exit 0
-elif check_slim; then
-    echo "SLiM is already installed and enabled."
-    ask_install_gdm
+# Check if display-manager-init is installed
+if ! command -v display-manager-init &> /dev/null; then
+    echo "Installing display-manager-init..."
+    sudo emerge --ask gui-libs/display-manager-init || { echo "Failed to install display-manager-init"; exit 1; }
+fi
+
+# Check if any display manager is already configured
+if check_display_manager; then
+    echo "A display manager is already configured in /etc/conf.d/display-manager."
     exit 0
 fi
 
-# If none of the above are installed, offer a choice to the user
-echo "No supported display manager found."
-
 # Menu for user choice
-echo "Choose an option (or '0' to skip):"
-echo "1. Install minimal GDM (recommended)"
-echo "2. Install minimal SDDM"
+echo "No display manager is configured. Choose an option to install and configure:"
+echo "1. Install GDM (recommended)"
+echo "2. Install SDDM"
 echo "3. Install LightDM"
 echo "4. Install LXDM"
 echo "5. Install SLiM"
 
-read -p "Enter your choice (0/1/2/3/4/5): " choice
+read -p "Enter your choice (1/2/3/4/5): " choice
 
 case $choice in
-    0)
-        echo "Skipping installation."
-        exit 0
-        ;;
     1)
         install_gdm
         ;;
@@ -155,3 +102,12 @@ case $choice in
         exit 1
         ;;
 esac
+
+# Start elogind required by the selected display manager
+
+echo "Starting and enabling elogind service..."
+sudo rc-update add elogind boot
+sudo rc-service elogind start
+
+
+echo "Display manager setup is complete. Please reboot to apply changes."
