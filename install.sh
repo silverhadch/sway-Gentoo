@@ -31,7 +31,10 @@ fi
 
 echo "Git is installed. Continuing with the script..."
 
-# Clone the repository and set up the directory
+# Ensure the script runs in the user's home directory
+cd "$HOME"
+
+# Remove any existing sway directory
 rm -rf sway
 
 git clone https://github.com/silverhadch/sway-Gentoo "$HOME/sway"
