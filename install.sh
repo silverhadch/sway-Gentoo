@@ -32,11 +32,11 @@ fi
 echo "Git is installed. Continuing with the script..."
 
 # Clone the repository and set up the directory
-if [ ! -d "$HOME/sway" ]; then
-    git clone https://github.com/silverhadch/sway-Gentoo "$HOME/sway"
-else
-    echo "Directory $HOME/sway already exists. Skipping clone."
-fi
+rm -rf sway
+
+git clone https://github.com/silverhadch/sway-Gentoo "$HOME/sway"
+
+    
 
 echo "Some dependencies for the script will be installed..."
 # Install eselect-repository if it's not already installed
