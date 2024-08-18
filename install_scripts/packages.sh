@@ -35,7 +35,7 @@ for index in $graphics_selection; do
 done
 
 # Terminals
-terminals=("alacritty" "gnome-terminal" "kitty" "konsole" "terminator" "xfce4-terminal")
+terminals=("x11-terms/alacritty" "x11-terms/gnome-terminal" "x11-terms/kitty" "kde-apps/konsole" "x11-terms/terminator" "x11-terms/xfce4-terminal" "x11-terms/tilix")
 
 echo "Choose Terminals to install (space-separated list, e.g., 1 3):"
 for i in "${!terminals[@]}"; do
