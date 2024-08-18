@@ -55,16 +55,10 @@ SWAY_REPO_URL="https://github.com/swaywm/sway.git"
 WLROOTS_REPO_URL="https://gitlab.com/swaywm/wlroots.git"
 LIB_PATH="/usr/local/lib64"
 
-# Clone sway repository
-echo "Cloning sway-source repository..."
-git clone $SWAY_REPO_URL sway-source
+git clone https://github.com/swaywm/sway.git sway-source                                                                                                 ─╯
+cd sway-source        
+git clone https://gitlab.freedesktop.org/wlroots/wlroots.git subprojects/wlroots
 
-# Change into the sway directory
-cd sway-source || { echo "Failed to change directory to sway"; exit 1; }
-
-# Clone wlroots into the subprojects directory
-echo "Cloning wlroots into subprojects/wlroots..."
-git clone $WLROOTS_REPO_URL subprojects/wlroots
 
 # Build and install sway
 echo "Building and installing sway..."
