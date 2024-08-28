@@ -1,0 +1,72 @@
+echo "Some dependencies for the script will be installed..."
+# Install eselect-repository if it's not already installed
+sudo emerge --ask app-eselect/eselect-repository
+
+
+# Function to check if a repository is enabled and enable it if not
+enable_overlay() {
+    local overlay="$1"
+    
+    # Check if the overlay is already enabled
+    if eselect repository list | grep -q "$overlay"; then
+        echo "$overlay repository is already enabled."
+    else
+        echo "Enabling $overlay repository..."
+        sudo eselect repository enable "$overlay"
+        echo "Syncing $overlay repository..."
+        sudo emerge --sync "$overlay"
+        echo "$overlay repository enabled and synced."
+    fi
+}
+
+# Enable the required overlays
+enable_overlay "dlang"
+enable_overlay "guru"
+
+
+# Sync the Portage tree
+sudo emerge --sync
+
+sudo emerge --ask dev-build/ninja
+# Display a welcome message
+clear
+cat << "EOF"
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ |j|u|s|t|a|g|u|y|l|i|n|u|x| 
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ |c|u|s|t|o|m| |s|c|r|i|p|t| 
+ +-+-+-+-+-+-+ +-+-+-+-+-+-+                                                                                                            
+EOF
+# Additional ASCII art for GitHub and Porter to Gentoo
+cat << "EOF"
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ | |s|i|l|v|e|r|h|a|d|c|h| | 
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+ | |G|e|n|t|o|o| |P|o|r|t| | 
+ +-+-+-+-+-+-+-+-+-+-+-+-+-+ 
+EOF
+
+# Initial instructions to the user
+echo "This script will attempt to install and configure various packages and settings."
+echo "Some packages might be masked and require adding 'ACCEPT_KEYWORDS=\"~amd64\"' to your /etc/portage/make.conf."
+echo "If you haven't done so, please update your make.conf accordingly before proceeding."
+echo "Failure to add this may result in installation errors."
+
+# Pause to allow user to read the message
+read -p "Press Enter to continue or Ctrl+C to exit..."
+# Run setup scripts
+for script in setup.sh packages.sh display_manager.sh add_bashrc.sh printers.sh bluetooth.sh addsession.sh; do
+    script_path="$HOME/sway/install_scripts/$script"
+    if [ -x "$script_path" ]; then
+        bash "$script_path"
+    else
+        echo "Script $script_path not found or not executable. Skipping."
+    fi
+    clear
+done
+
+# Clean up unnecessary packages
+sudo emerge --depclean
+
+# Final message
+printf "\e[1;32mYou can now reboot! Thank you.\e[0m\n"
