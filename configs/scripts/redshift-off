@@ -1,3 +1,4 @@
-#! /bin/sh
-redshift -m randr -x
-notify-send "Redshift off" "Temperature color: normal"
+#!/bin/sh
+echo "Not Finished for Gentoo"
+#redshift -m randr -x
+#notify-send "Redshift off" "Temperature color: normal"
