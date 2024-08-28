@@ -42,7 +42,7 @@ GRIM/SLURP
 Super + @Print --- Select Rectangle Screenshot
 @Print --- Fullscreen Screenshot
 
-REDSHIFT
+GAMMASTEP
 --------
 Super + Alt + r --- Gammastep On (night)
 Super + Alt + b --- Gammastep off (daytime)
