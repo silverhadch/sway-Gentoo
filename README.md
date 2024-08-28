@@ -5,6 +5,12 @@ I will try to add Systemd as an init Option, since OpenRC is the Gentoo Standard
 Upstream after making them work.
 ## Simply rerun install.sh for updating
 
+# Keyboard Layout
+Under .configs/sway/config.d/default after Installation you can find the Keyboardlayout which you can set up and change. It is in the Top of the File:
+
+input * {
+xkb_layout "us"
+}
 
 ## Wayland compositor
 
@@ -24,8 +30,6 @@ Within the install.sh file, you can choose to install the following window manag
 
 **User can select between vanilla(non-customized) and completely customized (personal customization)** 
 
-# Keyboard Layout
-Under .configs/sway/config.d/default after Installation you can find the Keyboardlayout which you can set up and change.
 
 # Installation
 
