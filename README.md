@@ -1,6 +1,6 @@
 ## Status of the Port
 ## "Finished" for sway. 
-I will try to fix Redshift and some scripts and add Systemd as an init Option later on and pull changes for other tilers from
+I will try to add Systemd as an init Option, since OpenRC is the Gentoo Standard, later on and pull changes for other tilers from
 Upstream after making them work.
 
 
