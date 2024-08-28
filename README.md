@@ -28,7 +28,7 @@ Under .configs/sway/config.d/default after Installation you can find the Keyboar
 # Installation
 
 ``` 
-wget https://github.com/silverhadch/sway-Gentoo/raw/Stable-sway/install.sh
+wget https://github.com/silverhadch/sway-Gentoo/raw/main/install.sh
 
 chmod +x install.sh
 
