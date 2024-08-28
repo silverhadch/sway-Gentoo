@@ -15,16 +15,16 @@ bindsym $mod+Return exec $term
 bindsym $mod+Shift+Return exec kitty
 bindsym $mod+Space exec $menu
 bindsym $mod+n exec swaync-client -t -sw
-bindsym $mod+f exec thunar
-bindsym $mod+b exec firefox-esr
-bindsym $mod+Shift+b exec firefox-esr -private-window
+bindsym $mod+f exec thunar-bin
+bindsym $mod+b exec firefox-bin
+bindsym $mod+Shift+b exec firefox-bin -private-window
 bindsym $mod+e exec geany
 bindsym $mod+g exec swaymsg "workspace 8; exec gimp"
 bindsym $mod+d exec swaymsg "workspace 9; exec Discord"
 bindsym $mod+o exec swaymsg "workspace 10; exec obs"
-bindsym $mod+r exec tilix -e ranger
-# bindsym $mod+v exec tilix -e nvim
-bindsym $mod+h exec tilix -e ~/.config/sway/keyhelper.sh
+bindsym $mod+r exec kitty -e ranger
+# bindsym $mod+v exec kitty -e nvim
+bindsym $mod+h exec kitty -e ~/.config/sway/keyhelper.sh
 
 # rules
 for_window [app_id="pavucontrol"] floating enable
@@ -110,4 +110,4 @@ bar {
      swaybar_command waybar
      }
 #GTK issue
-exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec dbus-update-activation-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
