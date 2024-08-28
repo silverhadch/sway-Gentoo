@@ -8,6 +8,7 @@ app-arch/file-roller
 firefox-bin
 media-fonts/fontawesome
 media-fonts/terminus-font 
+x11-misc/gammastep
 dev-util/geany
 dev-util/geany-plugins
 sys-devel/gettext
