@@ -23,10 +23,10 @@ Super + Shift + (1-9,0) ---  Move Window to tag (workspace 1-10)
 APPLICATIONS
 ------------
 Super + Space --- Rofi Menu
-Super + Return --- Tilix
+Super + Return --- Kitty
 Super + Shift + Return --- Kitty (floating)
-Super + b --- Firefox-ESR
-Super + Shift + b --- Firefox-ESR -private-window
+Super + b --- Firefox-bin
+Super + Shift + b --- Firefox-bin -private-window
 Super + f --- Thunar
 Super + e --- Geany
 Super + n --- Sway Notification Center
@@ -44,6 +44,6 @@ Super + @Print --- Select Rectangle Screenshot
 
 REDSHIFT
 --------
-Super + Alt + r --- Redshift On (night)
-Super + Alt + b --- Redshift off (daytime)
+Super + Alt + r --- Gammastep On (night)
+Super + Alt + b --- Gammastep off (daytime)
 
