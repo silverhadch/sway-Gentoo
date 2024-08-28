@@ -1,3 +1,4 @@
-#! /bin/sh
-redshift -m randr -P -O 5300
-notify-send "Redshift" "Temperature color: 5300"
+#!/bin/sh
+echo "Not Finished for Gentoo"
+#redshift -m randr -P -O 5300
+#notify-send "Redshift" "Temperature color: 5300"
