@@ -147,6 +147,7 @@ cp -r ~/sway/configs/waybar/ ~/.config/
 cp -r ~/sway/configs/rofi/ ~/.config/
 cp -r ~/sway/configs/kitty/ ~/.config/
 cp -r ~/sway/configs/backgrounds/ ~/.config/
+cp -r ~/sway/configs/mako/ ~/.config/
 
 # Adding GTK theme and icon theme
 bash ~/sway/colorschemes/purple.sh
