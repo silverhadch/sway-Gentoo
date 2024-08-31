@@ -49,6 +49,14 @@ install_packages() {
     fi
 }
 
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "This may or will overwrite configs in the config folders and maybe cause breakage of other wayland tilers because of wlroots."
+echo "Please check if you want to procede with the configs in the ~/sway Folder and the upstream Sway and Wlroots"
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+
+# Pause
+read -p "Press Enter to continue or Ctrl+C to exit..."
+
 echo "Sway will be compiled from source due to dependency issues of the repo package"
 
 # Define variables
