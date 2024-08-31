@@ -37,9 +37,7 @@ cd "$HOME"
 # Remove any existing sway directory
 rm -rf sway
 
-git clone https://github.com/silverhadch/sway-Gentoo "$HOME/sway"
-
-    
+git clone -b Stable-sway https://github.com/silverhadch/sway-Gentoo "$HOME/sway"
 
 echo "Some dependencies for the script will be installed..."
 # Install eselect-repository if it's not already installed
