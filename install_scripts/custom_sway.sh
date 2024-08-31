@@ -146,7 +146,21 @@ bash ~/sway/install_scripts/nwg-look
 
 # Install rofi-wayland
 bash ~/sway/install_scripts/rofi-wayland
-
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "Following folders and configs will be deleted/overwriten!!!"
+echo "~/.config/sway"
+echo "~/.config/swaync"
+echo "~/.config/waybar"
+echo "~/.config/rofi"
+echo "~/.config/kitty"
+echo "~/.config/backgrounds"
+echo "~/.config/mako"
+echo "~/scripts/"
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo ""
+read -p "Press Enter to continue or Ctrl+C to exit..."
 # Remove existing directories
 rm -rf ~/.config/sway/
 rm -rf ~/.config/swaync/
