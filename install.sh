@@ -46,25 +46,12 @@ echo "Some dependencies for the script will be installed..."
 sudo emerge --ask app-eselect/eselect-repository
 
 
-# Function to check if a repository is enabled and enable it if not
-enable_overlay() {
-    local overlay="$1"
-    
-    # Check if the overlay is already enabled
-    if eselect repository list | grep -q "$overlay"; then
-        echo "$overlay repository is already enabled."
-    else
-        echo "Enabling $overlay repository..."
-        sudo eselect repository enable "$overlay"
-        echo "Syncing $overlay repository..."
-        sudo emerge --sync "$overlay"
-        echo "$overlay repository enabled and synced."
-    fi
-}
 
 # Enable the required overlays
-enable_overlay "dlang"
-enable_overlay "guru"
+sudo eselect repository enable dlang
+sudo eselect repository enable guru
+sudo emaint sync -r dlang
+sudo emaint sync -r guru
 
 
 # Sync the Portage tree
