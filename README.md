@@ -1,12 +1,15 @@
+## Warning!!!
+This will overwrite configs in the config folders and maybe cause breakage of other wayland tilers because of wlroots.
+
 ## Status of the Port
 
-## "Finished" for sway. 
-I will try to add Systemd as an init Option, since OpenRC is the Gentoo Standard, later on and pull changes for other tilers from
-Upstream after making them work.
-## Simply rerun install.sh for updating
+## "Finished"
+I will try to add Systemd as an init Option, since OpenRC is the Gentoo Standard, later on but most likely not pull changes for other tilers from
+Upstream after they are aviable, however if you want to make an PR for them i will add that PR.
+## Simply rerun install.sh or install_scripts/reinstall.sh for updating
 
 # Keyboard Layout
-Under .configs/sway/config.d/default after Installation you can find the Keyboardlayout which you can set up and change. It is in the Top of the File:
+Under ~/.configs/sway/config.d/default after Installation you can find the Keyboardlayout which you can set up and change. It is in the Top of the File:
 
 input * {
 xkb_layout "us"
