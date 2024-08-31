@@ -147,7 +147,17 @@ bash ~/sway/install_scripts/nwg-look
 # Install rofi-wayland
 bash ~/sway/install_scripts/rofi-wayland
 
-# Moving custom config files
+# Remove existing directories
+rm -rf ~/.config/sway/
+rm -rf ~/.config/swaync/
+rm -rf ~/.config/waybar/
+rm -rf ~/.config/rofi/
+rm -rf ~/.config/kitty/
+rm -rf ~/.config/backgrounds/
+rm -rf ~/.config/mako/
+rm -rf ~/scripts/
+
+# Copy the new configurations
 cp -r ~/sway/configs/scripts/ ~
 cp -r ~/sway/configs/sway/ ~/.config/
 cp -r ~/sway/configs/swaync/ ~/.config/
