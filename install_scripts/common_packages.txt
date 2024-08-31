@@ -5,7 +5,7 @@ dev-util/dialog
 sys-fs/dosfstools
 sys-apps/eza
 app-arch/file-roller
-firefox-bin
+www-client/firefox-bin
 media-fonts/fontawesome
 media-fonts/terminus-font 
 x11-misc/gammastep
@@ -20,6 +20,7 @@ dev-libs/light
 sys-fs/mtools
 net-misc/networkmanager
 gnome-extra/nm-applet
+media-sound/pamixer
 media-sound/pulsemixer
 x11-themes/papirus-icon-theme
 media-sound/pavucontrol
