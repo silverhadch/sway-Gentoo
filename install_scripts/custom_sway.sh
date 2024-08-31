@@ -147,7 +147,34 @@ bash ~/sway/install_scripts/nwg-look
 # Install rofi-wayland
 bash ~/sway/install_scripts/rofi-wayland
 
-# Moving custom config files
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "Following folders and configs will be deleted/overwriten!!!"
+echo "~/.config/sway"
+echo "~/.config/swaync"
+echo "~/.config/waybar"
+echo "~/.config/rofi"
+echo "~/.config/kitty"
+echo "~/.config/backgrounds"
+echo "~/.config/mako"
+echo "~/scripts/"
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
+echo ""
+read -p "Press Enter to continue or Ctrl+C to exit..."
+# Remove existing directories
+rm -rf ~/.config/sway/
+rm -rf ~/.config/swaync/
+rm -rf ~/.config/waybar/
+rm -rf ~/.config/rofi/
+rm -rf ~/.config/kitty/
+rm -rf ~/.config/backgrounds/
+rm -rf ~/.config/mako/
+rm -rf ~/scripts/
+
+
+
+# Copy the new configurations
 cp -r ~/sway/configs/scripts/ ~
 cp -r ~/sway/configs/sway/ ~/.config/
 cp -r ~/sway/configs/swaync/ ~/.config/
