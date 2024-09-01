@@ -146,7 +146,6 @@ bash ~/sway/install_scripts/nwg-look
 
 # Install rofi-wayland
 bash ~/sway/install_scripts/rofi-wayland
-
 echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
 echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! "
 echo "Following folders and configs will be deleted/overwriten!!!"
@@ -163,26 +162,24 @@ echo "WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!!! WARNING!
 echo ""
 read -p "Press Enter to continue or Ctrl+C to exit..."
 # Remove existing directories
-rm -rf ~/.config/sway/
-rm -rf ~/.config/swaync/
-rm -rf ~/.config/waybar/
-rm -rf ~/.config/rofi/
-rm -rf ~/.config/kitty/
-rm -rf ~/.config/backgrounds/
-rm -rf ~/.config/mako/
-rm -rf ~/scripts/
-
-
+sudo rm -rf ~/.config/sway/
+sudo rm -rf ~/.config/swaync/
+sudo rm -rf ~/.config/waybar/
+sudo rm -rf ~/.config/rofi/
+sudo rm -rf ~/.config/kitty/
+sudo rm -rf ~/.config/backgrounds/
+sudo rm -rf ~/.config/mako/
+sudo rm -rf ~/scripts/
 
 # Copy the new configurations
-cp -r ~/sway/configs/scripts/ ~
-cp -r ~/sway/configs/sway/ ~/.config/
-cp -r ~/sway/configs/swaync/ ~/.config/
-cp -r ~/sway/configs/waybar/ ~/.config/
-cp -r ~/sway/configs/rofi/ ~/.config/
-cp -r ~/sway/configs/kitty/ ~/.config/
-cp -r ~/sway/configs/backgrounds/ ~/.config/
-cp -r ~/sway/configs/mako/ ~/.config/
+sudo cp -r ~/sway/configs/scripts/ ~
+sudo cp -r ~/sway/configs/sway/ ~/.config/
+sudo cp -r ~/sway/configs/swaync/ ~/.config/
+sudo cp -r ~/sway/configs/waybar/ ~/.config/
+sudo cp -r ~/sway/configs/rofi/ ~/.config/
+sudo cp -r ~/sway/configs/kitty/ ~/.config/
+sudo cp -r ~/sway/configs/backgrounds/ ~/.config/
+sudo cp -r ~/sway/configs/mako/ ~/.config/
 
 # Adding GTK theme and icon theme
 bash ~/sway/colorschemes/purple.sh
