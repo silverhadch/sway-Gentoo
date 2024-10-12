@@ -70,25 +70,25 @@
     "on-scroll-up": "brightnessctl -c backlight set +1%"
 },
 "pulseaudio": {        
-        "format": "{icon}",
-        "format-muted": "",
-        "on-click": "~/.config/waybar/scripts/volume --toggle",
-        "on-click-right": "pavucontrol",
-        "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
-        "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
-        "scroll-step": 5,
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "tooltip": true,
-        "tooltip-format": "{icon} at {volume}%"
-  },
+    "format": "<span foreground='#E69875'>{icon}</span> <span foreground='#FFFFFF'>{volume}%</span>",
+    "format-muted": "<span foreground='#E69875'></span> <span foreground='#FFFFFF'>{volume}%</span>",
+    "on-click": "~/.config/waybar/scripts/volume --toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
+    "on-scroll-down": "~/.config/waybar/scripts/volume --dec",
+    "scroll-step": 5,
+    "format-icons": {
+        "headphone": "",
+        "hands-free": "",
+        "headset": "",
+        "phone": "",
+        "portable": "",
+        "car": "",
+        "default": ["", "", ""]
+    },
+    "tooltip": true,
+    "tooltip-format": "<span foreground='#E69875'>{icon}</span> at <span foreground='#FFFFFF'>{volume}%</span>"
+},
  "custom/notification": {
     "tooltip": false,
     "format": "<span foreground='#E69875'> {icon} </span>",
